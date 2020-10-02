@@ -25,7 +25,13 @@ public class Vierkant {
         return zijde*zijde;
     }
 
-    public double berekenZijde(double zijde) {
+    public double berekenZijde(double zijde) throws IllegalArgumentException {
+        if (Math.sqrt(zijde) <= 0){
+            throw new IllegalArgumentException("De uitkomst mag niet kleiner dan 0 zijn.");
+        } if(zijde <= 0){
+            throw new IllegalArgumentException("Je moet een positief getal invoeren");
+        }
+
         return Math.sqrt(zijde);
     }
 
