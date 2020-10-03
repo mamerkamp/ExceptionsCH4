@@ -1,5 +1,7 @@
 package model;
 
+import java.util.InputMismatchException;
+
 public class Vierkant {
     private double zijde;
 
@@ -25,14 +27,14 @@ public class Vierkant {
         return zijde*zijde;
     }
 
-    public double berekenZijde(double zijde) throws IllegalArgumentException {
-        if (Math.sqrt(zijde) <= 0){
+    public double berekenZijde(double oppervlakte) throws IllegalArgumentException {
+        if (oppervlakte == 0){
             throw new IllegalArgumentException("De uitkomst mag niet kleiner dan 0 zijn.");
-        } if(zijde <= 0){
-            throw new IllegalArgumentException("Je moet een positief getal invoeren");
+        } if(oppervlakte <= 0){
+            throw new InputMismatchException("Je moet een positief getal invoeren");
         }
 
-        return Math.sqrt(zijde);
+        return Math.sqrt(oppervlakte);
     }
 
     public double getZijde() {

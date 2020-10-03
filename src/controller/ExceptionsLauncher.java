@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.Vierkant;
@@ -30,13 +31,15 @@ public class ExceptionsLauncher{
         boolean onjuisteInvoer = true;
         while (onjuisteInvoer) {
             System.out.print("Geef het oppervlakte: ");
-            double oppervlaktee = keyboard.nextDouble();
+            double oppervlakte = keyboard.nextDouble();
             try {
                 Vierkant invoerOppervlakte = new Vierkant();
-                System.out.printf("De zijde is dan: %.2f\n", invoerOppervlakte.berekenZijde(oppervlaktee));
+                System.out.printf("De zijde is dan: %.2f\n", invoerOppervlakte.berekenZijde(oppervlakte));
                 onjuisteInvoer = false;
-            } catch (IllegalArgumentException fout) {
+            } catch (InputMismatchException fout) {
                 System.out.println(fout.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             } finally {
                 System.out.println("Je invoer is juist afgehandeld");
             }
